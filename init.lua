@@ -1,3 +1,3 @@
-require("lua.picco.init")
+require("picco.init")
 print("/init.lua loaded")
 

@@ -1,2 +1,3 @@
-require("lua.picco.remap")
+require("picco.remap")
+require("picco.lazy")
 print("/lua/picco/init.lua loaded")
