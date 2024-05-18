@@ -9,7 +9,7 @@
     "json",
     "typescript",
     "typescriptreact",
-    "lua",
+    "lua"
   ],
 
   "tsserver.formatOnType": false,

@@ -17,6 +17,8 @@ require("lazy").setup({
   -- plenary
   "nvim-lua/plenary.nvim",
 
+  --VimBeGood
+  'ThePrimeagen/vim-be-good',
   -- file navigation plugins
   { import = 'picco.plugins.telescope' },
   { import = 'picco.plugins.harpoon' },
@@ -25,11 +27,9 @@ require("lazy").setup({
   { import = 'picco.plugins.treesitter' },
   { import = 'picco.plugins.cloak' },
 
-  -- theme//
-  {
-    "rose-pine/neovim",
-    name = "rose-pine"
-  },
+  --keep the context (function, case, if) on top
+  'wellle/context.vim',
+
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -60,9 +60,12 @@ require("lazy").setup({
     branch = "release",
     config = function()
       local keyset = vim.keymap.set
+
       keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
       keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
       keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
+
+      keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
 
       local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
       keyset("i", "<C-n>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()',
