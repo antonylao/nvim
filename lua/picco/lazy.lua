@@ -81,6 +81,20 @@ require("lazy").setup({
       -- Use <c-space> to trigger completion
       keyset("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
 
+      -- Use K to show documentation in preview window
+      function _G.show_docs()
+        local cw = vim.fn.expand('<cword>')
+        if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
+          vim.api.nvim_command('h ' .. cw)
+        elseif vim.api.nvim_eval('coc#rpc#ready()') then
+          vim.fn.CocActionAsync('doHover')
+        else
+          vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+        end
+      end
+
+      keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
+
       local opts = { silent = true, nowait = true }
       keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
 
