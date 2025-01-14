@@ -25,6 +25,16 @@ vim.keymap.set("n", "<leader>p", "\"+p")
 
 -- Q is bullshit so disable it
 vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "<C-z>", "<nop>")
+
+-- for JS
+-- mz sets marker, `z goes back to marker
+-- "ayiw copy into register a the inner word
+-- o inserts on the line below
+-- <CR> (Ctrl + R) insert a register in insert mode: no reliable way to do it?
+-- inside expand, <CR> is enter?
+vim.keymap.set("n", "<leader>l", "mz\"ayiwoconsole.log(\"<Esc>:r! echo %:t<CR>kJ A ~ <Esc>\"apa: \" + <Esc>\"apa)<Esc>`z")
+vim.keymap.set("v", "<leader>l", "mz\"ayoconsole.log(\"<Esc>:r! echo %:t<CR>kJ A ~ <Esc>\"apA: \" + <Esc>\"apA)<Esc>`z")
 
 -- for moving between projects (needs tmux: dont understand how it works)
 -- vim.keymap.set("n", "<C-,>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
